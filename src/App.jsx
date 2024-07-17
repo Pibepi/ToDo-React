@@ -9,7 +9,7 @@ import NotFoundPaage from './pages/NotFoundPaage/NotFoundPaage';
 
 function App() {
   return (
-
+ 
     <div className="App">
       <Router>
         <Nav />
