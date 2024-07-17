@@ -1,0 +1,57 @@
+.sidenav {
+    padding: 0;
+}
+
+.sidenav li {
+    margin-bottom: 10px;
+}
+
+.sidenav li a {
+    padding: 15px 20px;
+    display: block;
+    background-color: #ffffff;
+    font-size: 16px;
+}
+
+.sidenav li a.active {
+    background-color: #ffff68;
+    color: #000000;
+}
+
+.sidenav li a.active:hover {
+    background-color: #ffff68 !important; 
+    color: #000000 !important; 
+}
+
+.sidenav li a:hover {
+    background-color: #fbffd7 !important;
+    color: #000000 !important;
+}
+
+.mySidenavTrigger {
+    display: none;
+}
+
+.myMenu{
+    color: #000000 !important; 
+    padding: 15px;
+    cursor: pointer;
+}
+
+.sidenav-overlay {
+    display: none !important; /* Приховує затемнення фону */
+  }
+
+  
+
+@media only screen and (max-width: 992px) {
+    .sidenav-trigger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .sidenav-fixed {
+        display: none;
+    }
+}
+
