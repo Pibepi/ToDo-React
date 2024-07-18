@@ -1,1 +1,97 @@
-.TodoPage {}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
+body {
+  font-family: 'Cinzel', cursive;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.TodoPage {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.todo-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-item {
+  background-color: #ffffff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.todo-item div {
+  text-align: left;
+}
+
+.todo-item h5 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.todo-item p {
+  margin: 5px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.todo-item .tags,
+.todo-item .priority,
+.todo-item .date,
+.todo-item .added-date {
+  font-size: 12px;
+  color: #999;
+}
+
+.todo-item .actions {
+  display: flex;
+  align-items: center;
+}
+
+.todo-item .actions button {
+  background-color: #ffff68 !important;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: 'Cinzel', cursive;
+}
+
+.todo-item .actions button:hover {
+  background-color: #e0e0e0 !important;
+}
+
+.add-task {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.add-task button {
+  background-color: #ffff68 !important;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: 'Cinzel', cursive;
+}
+
+.add-task button:hover {
+  background-color: #e0e0e0 !important;
+}

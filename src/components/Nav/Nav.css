@@ -1,57 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
 .sidenav {
-    padding: 0;
+  padding: 0;
 }
 
 .sidenav li {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .sidenav li a {
-    padding: 15px 20px;
-    display: block;
-    background-color: #ffffff;
-    font-size: 16px;
+  padding: 15px 20px;
+  display: block;
+  background-color: #ffffff;
+  font-size: 16px;
 }
 
 .sidenav li a.active {
-    background-color: #ffff68;
-    color: #000000;
-}
+  background-color: #ffff68;
+  color: #000000;
+} 
 
 .sidenav li a.active:hover {
-    background-color: #ffff68 !important; 
-    color: #000000 !important; 
+  background-color: #ffff68 !important;
+  color: #000000 !important;
 }
 
 .sidenav li a:hover {
-    background-color: #fbffd7 !important;
-    color: #000000 !important;
+  background-color: #fbffd7 !important;
+  color: #000000 !important;
 }
 
 .mySidenavTrigger {
-    display: none;
+  display: none;
 }
 
-.myMenu{
-    color: #000000 !important; 
-    padding: 15px;
-    cursor: pointer;
+.myMenu {
+  color: #000000 !important;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .sidenav-overlay {
-    display: none !important; /* Приховує затемнення фону */
-  }
-
-  
-
-@media only screen and (max-width: 992px) {
-    .sidenav-trigger {
-        display: block;
-        cursor: pointer;
-    }
-
-    .sidenav-fixed {
-        display: none;
-    }
+  display: none !important; /* Hide background overlay */
 }
 
+.body-padding {
+  padding-left: 300px;
+  padding-top: 43px;
+}
+
+.myMenu1 {
+  display: none;
+}
+
+.nav-item {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.nav-item:hover {
+  background-color: #e0e0e0; 
+  color: #000;
+}
+
+.addTaskLi {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.addTaskLi:hover {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+.addTaskBtn {
+  margin-right: 8px;
+}
+
+@media only screen and (max-width: 992px) {
+  .sidenav-trigger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .sidenav-fixed {
+    display: none;
+  }
+}
+
+/* Custom styles for SweetAlert2 buttons */
+.swal-confirm-button {
+  background-color: #ffff68!important;
+  color: rgb(0, 0, 0) !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  margin: 10px !important;
+  cursor: pointer !important;
+  font-family: 'Cinzel', cursive !important;  
+}
+
+.swal-deny-button {
+  background-color: #ffa74f !important;
+  color: rgb(0, 0, 0) !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  margin: 10px !important;
+  cursor: pointer !important;
+  font-family: 'Cinzel', cursive !important;  
+}
+
+.swal-cancel-button {
+  background-color: #e3e3e3 !important;
+  color: rgb(0, 0, 0) !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  margin: 10px !important;
+  cursor: pointer !important;
+  font-family: 'Cinzel', cursive !important;  
+}
+
+.swal-confirm-button-ok {
+  background-color: #ffff68 !important; 
+  color: #000000 !important; 
+  font-family: 'Cinzel', cursive !important;  
+}
+
+.swal2-input:focus {
+  border: #ffff68 !important;
+}
+
+.swal2-input:focus {
+  border-bottom-color: rgb(255, 187, 0) !important; 
+  box-shadow: 0 1px 0 0 #ffff68 !important; 
+}
+
+#swal-input1 {
+  font-size: 20px;
+}
+
+#descriptionTaskInput {
+  margin-top: 10px;
+  width: 100% !important;
+  height: 100px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  resize: vertical; /* Allows vertical resizing */
+  box-sizing: border-box;
+  outline: none; /* Removes outer focus border */
+}
+
+#descriptionTaskInput::placeholder {
+  color: #999;
+}
+
+#descriptionTaskInput:focus,
+#descriptionTaskInput:active {
+  border: none; 
+  outline: none; 
+}
+
+#dateInput:focus {
+  border-bottom-color: rgb(255, 187, 0) !important; 
+  box-shadow: 0 1px 0 0 #ffff68 !important; 
+}
+
+#dateInput {
+  width: 50%;
+  align-items: start;
+}
+
+#tagsInput,
+#priorityInput {
+  margin-top: 10px;
+  width: 100% !important;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+#tagsInput::placeholder,
+#priorityInput::placeholder {
+  color: #999;
+}
+
+#tagsInput:focus,
+#priorityInput:focus,
+#tagsInput:active,
+#priorityInput:active {
+  border: none;
+  outline: none;
+}
+
+.htmlSwal {
+  border: #fff700 1px solid !important;
+  padding: 10px; 
+  background-color: #fffef4; 
+  text-align: left;
+  padding: 20px;
+}
+
+.htmlSwal h5 {
+  font-size: 1.2em;
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.htmlSwal p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.htmlSwalTime {
+  text-align: right;
+  font-size: 0.85em;
+  color: gray;
+}
+
+.SwalTimeToBeCompleted {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+
+htmlSwalTime{
+  margin-top: 15px;
+}

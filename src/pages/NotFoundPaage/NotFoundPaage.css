@@ -19,3 +19,20 @@
     text-align: center;
   }
   
+
+  
+  .back-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
+    background-color: #ffff68  !important;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .back-button:hover {
+    background-color: #f0f8ab ;
+    color: rgb(0, 0, 0);
+  }
