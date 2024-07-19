@@ -85,6 +85,12 @@ function App() {
     applyFilter(newTasks, filter);
   };
 
+  const removeTask = (taskId) => {
+    const updatedTasks = tasks.filter(task => task.id !== taskId);
+    setTasks(updatedTasks);
+    applyFilter(updatedTasks, filter);
+  };
+
   const triggerAddTaskLi = () => {
     if (navRef.current) {
       navRef.current.addTaskLi();
@@ -113,7 +119,7 @@ function App() {
       <div className="App">
         <Nav ref={navRef} addTask={addTask} projects={projects} />
         <Routes>
-          <Route path="/" element={<TodoPage tasks={filteredTasks} triggerAddTaskLi={triggerAddTaskLi} myFilter={handleFilter} />} />
+          <Route path="/" element={<TodoPage tasks={filteredTasks} triggerAddTaskLi={triggerAddTaskLi} myFilter={handleFilter} removeTask={removeTask} />} />
           <Route path="/project" element={<ProjectManager projects={projects} addProject={addProject} removeProject={removeProject} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

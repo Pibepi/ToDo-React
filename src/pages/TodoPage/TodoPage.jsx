@@ -4,7 +4,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import TaskFilter from '../../components/TaskFilter/TaskFilter';
 
-const TodoPage = ({ tasks, triggerAddTaskLi, myFilter }) => {
+const TodoPage = ({ tasks, triggerAddTaskLi, myFilter, removeTask }) => {
   const [tasksDueToday, setTasksDueToday] = useState([]);
   const [editingTask, setEditingTask] = useState(null);
   const [editedTask, setEditedTask] = useState({});
@@ -35,8 +35,7 @@ const TodoPage = ({ tasks, triggerAddTaskLi, myFilter }) => {
   };
 
   const btnDeleteTask = (id) => {
-    const updatedTasks = tasksDueToday.filter((task) => task.id !== id);
-    setTasksDueToday(updatedTasks);
+    removeTask(id);
   };
 
   return (
@@ -44,7 +43,6 @@ const TodoPage = ({ tasks, triggerAddTaskLi, myFilter }) => {
       <TaskFilter myFilter={myFilter} />
       <div className="todo-header">
         <h2>Tasks Due Today</h2>
-        
       </div>
       {tasksDueToday.length > 0 ? (
         <ul className="todo-list">
@@ -127,9 +125,15 @@ const TodoPage = ({ tasks, triggerAddTaskLi, myFilter }) => {
       <div className="add-task">
         <button onClick={triggerAddTaskLi}>Add New Task</button>
       </div>
-     
     </div>
   );
+};
+
+TodoPage.propTypes = {
+  tasks: PropTypes.array.isRequired,
+  triggerAddTaskLi: PropTypes.func.isRequired,
+  myFilter: PropTypes.func.isRequired,
+  removeTask: PropTypes.func.isRequired,
 };
 
 export default TodoPage;
