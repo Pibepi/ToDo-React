@@ -4,13 +4,18 @@ import M from 'materialize-css';
 import Swal from 'sweetalert2';
 import './Nav.css';
 
-const Nav = forwardRef(({ addTask }, ref) => {
+const Nav = forwardRef(({ addTask, projects }, ref) => {
   const [isPaddingStyle, setIsPaddingStyle] = useState(false);
 
   useEffect(() => {
     M.Sidenav.init(document.querySelectorAll('.sidenav'), {
       edge: 'left',
-      preventScrolling: false 
+      preventScrolling: false,
+      onCloseEnd: () => {
+        if (window.innerWidth > 992) {
+          setIsPaddingStyle(false);
+        }
+      }
     });
 
     if (isPaddingStyle) {
@@ -21,6 +26,11 @@ const Nav = forwardRef(({ addTask }, ref) => {
       document.getElementById('myMenu').style.display = 'block';
     }
   }, [isPaddingStyle]);
+
+  useEffect(() => {
+    const dropdowns = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(dropdowns);
+  }, []);
 
   const toggleSidenav = () => {
     const sidenavInstance = M.Sidenav.getInstance(document.querySelector('.sidenav'));
@@ -36,7 +46,16 @@ const Nav = forwardRef(({ addTask }, ref) => {
         <input id="dateInput" class="swal2-input" type="date" placeholder="Enter date...">
         <input id="tagsInput" class="swal2-input" placeholder="Enter tags (comma-separated)...">
         <input id="priorityInput" class="swal2-input" type="number" placeholder="Enter priority (1-5)...">
+        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Select Project</a>
+        <ul id='dropdown1' class='dropdown-content'>
+          ${projects.map(project => `<li><a href="#!" onclick="document.getElementById('projectInput').value='${project}'">${project}</a></li>`).join('')}
+        </ul>
+        <input id="projectInput" type="hidden">
       `,
+      didOpen: () => {
+        const dropdowns = document.querySelectorAll('.dropdown-trigger');
+        M.Dropdown.init(dropdowns);
+      },
       showDenyButton: false,
       showCancelButton: true,
       confirmButtonText: "Add",
@@ -53,13 +72,14 @@ const Nav = forwardRef(({ addTask }, ref) => {
         const dateInput = document.getElementById('dateInput').value;
         const tags = document.getElementById('tagsInput').value.split(',').map(tag => tag.trim());
         const priority = document.getElementById('priorityInput').value;
-
+        const project = document.getElementById('projectInput').value;
         const newTask = {
           name: taskName,
           description: taskDescription,
           date: dateInput,
           tags: tags,
           priority: parseInt(priority, 10),
+          project: project
         };
 
         addTask(newTask);
@@ -83,12 +103,12 @@ const Nav = forwardRef(({ addTask }, ref) => {
           <i className="material-icons addTaskBtn">add</i>Add task
         </li>
         <li><NavLink to="/" className="nav-item" activeClassName="active">Home</NavLink></li>
-        <li><NavLink to="/about" className="nav-item" activeClassName="active">About</NavLink></li>
+        <li><NavLink to="/project" className="nav-item" activeClassName="active">Project</NavLink></li>
       </ul>
 
       <ul className="sidenav hide-on-med-and-down">
         <li><NavLink to="/" className="nav-item" activeClassName="active">Home</NavLink></li>
-        <li><NavLink to="/about" className="nav-item" activeClassName="active">About</NavLink></li>
+        <li><NavLink to="/project" className="nav-item" activeClassName="active">Project</NavLink></li>
       </ul>
     </div>
   );

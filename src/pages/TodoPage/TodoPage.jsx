@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './TodoPage.css';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import TaskFilter from '../../components/TaskFilter/TaskFilter';
 
-const TodoPage = ({ tasks, triggerAddTaskLi }) => {
+const TodoPage = ({ tasks, triggerAddTaskLi, myFilter }) => {
   const [tasksDueToday, setTasksDueToday] = useState([]);
   const [editingTask, setEditingTask] = useState(null);
   const [editedTask, setEditedTask] = useState({});
@@ -82,6 +83,13 @@ const TodoPage = ({ tasks, triggerAddTaskLi }) => {
                     className="edit-input"
                   />
                   <input
+                    type="text"
+                    name="project"
+                    value={editedTask.project}
+                    onChange={handleEditChange}
+                    className="edit-input"
+                  />
+                  <input
                     type="date"
                     name="date"
                     value={editedTask.date}
@@ -99,6 +107,7 @@ const TodoPage = ({ tasks, triggerAddTaskLi }) => {
                   <p>{task.description}</p>
                   <p className="tags">Tags: {task.tags.join(', ')}</p>
                   <p className="priority">Priority: {task.priority}</p>
+                  <p className="project">Project: {task.project}</p>
                   <p className="date">Due Date: {task.date}</p>
                   <p className="added-date">Added Date: {task.addedDate}</p>
                   <div className="actions">
@@ -116,10 +125,9 @@ const TodoPage = ({ tasks, triggerAddTaskLi }) => {
       <div className="add-task">
         <button onClick={triggerAddTaskLi}>Add New Task</button>
       </div>
+      <TaskFilter myFilter={myFilter} />
     </div>
   );
 };
-
-
 
 export default TodoPage;

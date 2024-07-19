@@ -51,6 +51,7 @@ body {
   font-size: 14px;
 }
 
+.todo-item .project,
 .todo-item .tags,
 .todo-item .priority,
 .todo-item .date,

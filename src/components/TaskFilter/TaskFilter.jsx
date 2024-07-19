@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import './TaskFilter.css';
 
-const TaskFilter = ({ onFilter }) => {
+const TaskFilter = ({ myFilter }) => {
   const [filter, setFilter] = useState({
     name: '',
     description: '',
     tags: '',
-    priority: ''
+    priority: '',
   });
 
   const handleChange = (e) => {
@@ -16,8 +17,8 @@ const TaskFilter = ({ onFilter }) => {
     }));
   };
 
-  const handleFilter = () => {
-    onFilter(filter);
+  const applyFilter = () => {
+    myFilter(filter);
   };
 
   return (
@@ -51,7 +52,7 @@ const TaskFilter = ({ onFilter }) => {
         onChange={handleChange}
         placeholder="Filter by priority"
       />
-      <button onClick={handleFilter}>Apply Filter</button>
+      <button className='btn' onClick={applyFilter}>Apply Filter</button>
     </div>
   );
 };
