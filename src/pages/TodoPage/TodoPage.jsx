@@ -41,8 +41,10 @@ const TodoPage = ({ tasks, triggerAddTaskLi, myFilter }) => {
 
   return (
     <div className="TodoPage container">
+      <TaskFilter myFilter={myFilter} />
       <div className="todo-header">
         <h2>Tasks Due Today</h2>
+        
       </div>
       {tasksDueToday.length > 0 ? (
         <ul className="todo-list">
@@ -125,7 +127,7 @@ const TodoPage = ({ tasks, triggerAddTaskLi, myFilter }) => {
       <div className="add-task">
         <button onClick={triggerAddTaskLi}>Add New Task</button>
       </div>
-      <TaskFilter myFilter={myFilter} />
+     
     </div>
   );
 };

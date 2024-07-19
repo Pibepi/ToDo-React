@@ -1,27 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 
 .TaskFilter {
-  padding: 20px;
+  padding: 10px;
   background-color: #ffffff !important;
   border: 1px solid #e0e0e0 !important;
   border-radius: 8px;
   font-family: 'Cinzel', cursive !important;
-margin-top: 20px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .TaskFilter h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.TaskFilter form {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  align-items: center;
 }
 
 .TaskFilter input {
-  display: block;
-  width: 97% !important;
-  padding: 10px !important;
-  margin-bottom: 10px !important;
+  flex: 1 1 auto;
+  padding: 4px !important;
+  margin-bottom: 0 !important;
   border: 1px solid #e0e0e0 !important;
   border-radius: 4px !important;
-  font-size: 16px !important;
+  font-size: 12px !important;
   background-color: #ffffff !important;
 }
 
@@ -31,20 +41,54 @@ margin-top: 20px;
   outline: none !important;
 }
 
-.TaskFilter button {
-  display: block !important;
-  width: 100% !important;
+.TaskFilter .buttons {
+  display: flex;
+  gap: 10px;
+}
 
+.TaskFilter .btn-apply {
+  padding: 4px 8px !important;
   background-color: #ffff68 !important;
   color: #000000 !important;
   border: none !important;
   border-radius: 4px !important;
-  font-size: 16px !important;
+  font-size: 12px !important;
   cursor: pointer !important;
-  margin-top: 15px !important;
-
+  transition: background-color 0.3s !important;
 }
 
-.TaskFilter button:hover {
+.TaskFilter .btn-apply:hover {
   background-color: #fbffd7 !important;
+}
+
+.TaskFilter .btn-reset {
+  padding: 4px 8px !important;
+  background-color: #ff7043 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s !important;
+}
+
+.TaskFilter .btn-reset:hover {
+  background-color: #ffab91 !important;
+}
+
+
+
+.TaskFilter .btnApply{
+  padding: 4px 8px !important;
+  background-color: #ffd900 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s !important;
+}
+
+.TaskFilter .btnApply:hover {
+  background-color: #f3f3a4 !important;
 }
