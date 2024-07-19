@@ -11,6 +11,7 @@
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  
 }
 
 .TaskFilter h2 {
@@ -42,11 +43,13 @@
 }
 
 .TaskFilter .buttons {
+  margin-top: 10px;
   display: flex;
   gap: 10px;
 }
 
 .TaskFilter .btn-apply {
+
   padding: 4px 8px !important;
   background-color: #ffff68 !important;
   color: #000000 !important;
@@ -62,6 +65,7 @@
 }
 
 .TaskFilter .btn-reset {
+
   padding: 4px 8px !important;
   background-color: #ff7043 !important;
   color: #ffffff !important;

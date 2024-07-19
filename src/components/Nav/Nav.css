@@ -56,7 +56,7 @@
 .nav-item {
   padding: 10px 20px;
   text-decoration: none;
-  color: black;
+  color: rgb(255, 98, 0);
 }
 
 .nav-item:hover {
@@ -157,10 +157,12 @@
   resize: vertical; /* Allows vertical resizing */
   box-sizing: border-box;
   outline: none; /* Removes outer focus border */
+  background-color: #faf9ef;
 }
 
 #descriptionTaskInput::placeholder {
   color: #999;
+ 
 }
 
 #descriptionTaskInput:focus,
@@ -170,13 +172,15 @@
 }
 
 #dateInput:focus {
-  border-bottom-color: rgb(255, 187, 0) !important; 
-  box-shadow: 0 1px 0 0 #ffff68 !important; 
+  border-bottom-color: rgb(0, 0, 0) !important; 
+  box-shadow: 0 1px 0 0 #000000 !important; 
+  color: #000000 !important;;
 }
 
 #dateInput {
   width: 50%;
   align-items: start;
+  color: #000000 !important;;
 }
 
 #tagsInput,
@@ -184,16 +188,18 @@
   margin-top: 10px;
   width: 100% !important;
   padding: 10px;
-  border: none;
+
   border-radius: 4px;
   font-size: 14px;
   box-sizing: border-box;
   outline: none;
+  
 }
 
 #tagsInput::placeholder,
 #priorityInput::placeholder {
   color: #999;
+  
 }
 
 #tagsInput:focus,
@@ -202,6 +208,7 @@
 #priorityInput:active {
   border: none;
   outline: none;
+  
 }
 
 .htmlSwal {
@@ -232,40 +239,46 @@
 .SwalTimeToBeCompleted {
   margin-bottom: 20px;
   color: #666;
+  
 }
 
 
 htmlSwalTime{
   margin-top: 15px;
+  
 }
 
 
 .dropdown-trigger {
-  display: block;
+ 
+
+
   width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
+
+ 
+  color: white !important;;
   border: none;
-  border-radius: 4px;
+  border-radius: 4px ;
   cursor: pointer;
-  text-align: center;
-  margin-bottom: 10px;
+  text-align: center!important;;
+
+  
 }
 
 .dropdown-content {
 
-  display: none ;
-  position: absolute;
-  width: 100%;
+
+  position: fixed !important;;
+
   background-color: #ffffff !important;;
-  border: 1px solid #ccc !important;;
-  border-radius: 4px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+
+
+  box-shadow: 0 8px 16px rgba(255, 0, 0, 0.1)!important;;
+
+
+
+  
+  
 }
 
 .dropdown-content li {
@@ -273,18 +286,67 @@ htmlSwalTime{
   padding: 10px;
   cursor: pointer;
   border-bottom: 1px solid #ccc;
+  
 }
 
 .dropdown-content li:hover {
-  background-color: #007bff;
-  color: white;
+
+  color: rgb(0, 0, 0);
+  
 }
 
 .dropdown-content li:last-child {
   border-bottom: none;
+
 }
 
 /* Стиль для контейнера в SweetAlert2 */
 #swal2-content {
   padding: 20px;
+  
+}
+
+
+/* Custom styles for SweetAlert2 error popup */
+.swal-error-popup {
+  background-color: #fff8e1;
+  border: 1px solid #f5c2c7;
+}
+
+.swal-error-title {
+  color: #721c24;
+}
+
+.swal-error-text {
+  color: #721c24;
+}
+
+/* Custom styles for SweetAlert2 buttons */
+.swal-error-confirm-button {
+  background-color: #ff0000 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 4px !important;
+  padding: 10px 20px !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+}
+
+.swal-error-cancel-button {
+  background-color: #6c757d !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 4px !important;
+  padding: 10px 20px !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+}
+
+/* Optional: Additional button hover effects */
+.swal-error-confirm-button:hover {
+  background-color: #ff8c00 !important;
+}
+
+.swal-error-cancel-button:hover {
+  background-color: #5a6268 !important;
 }

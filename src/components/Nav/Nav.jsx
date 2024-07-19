@@ -6,6 +6,7 @@ import './Nav.css';
 
 const Nav = forwardRef(({ addTask, projects }, ref) => {
   const [isPaddingStyle, setIsPaddingStyle] = useState(false);
+  const [selectedProject, setSelectedProject] = useState('Select Project');
 
   useEffect(() => {
     M.Sidenav.init(document.querySelectorAll('.sidenav'), {
@@ -46,15 +47,19 @@ const Nav = forwardRef(({ addTask, projects }, ref) => {
         <input id="dateInput" class="swal2-input" type="date" placeholder="Enter date...">
         <input id="tagsInput" class="swal2-input" placeholder="Enter tags (comma-separated)...">
         <input id="priorityInput" class="swal2-input" type="number" placeholder="Enter priority (1-5)...">
-        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Select Project</a>
+        <a id="projectDropdown" class='dropdown-trigger btn' href='#' data-target='dropdown1'>${selectedProject}</a>
         <ul id='dropdown1' class='dropdown-content'>
-          ${projects.map(project => `<li><a href="#!" onclick="document.getElementById('projectInput').value='${project}'">${project}</a></li>`).join('')}
+          ${projects.map(project => `<li onclick="document.getElementById('projectInput').value='${project}'; window.selectProject('${project}')">${project}</li>`).join('')}
         </ul>
         <input id="projectInput" type="hidden">
       `,
       didOpen: () => {
         const dropdowns = document.querySelectorAll('.dropdown-trigger');
         M.Dropdown.init(dropdowns);
+        window.selectProject = (project) => {
+          setSelectedProject(project);
+          document.getElementById('projectDropdown').innerText = project;
+        };
       },
       showDenyButton: false,
       showCancelButton: true,
@@ -67,12 +72,30 @@ const Nav = forwardRef(({ addTask, projects }, ref) => {
       backdrop: false
     }).then((result) => {
       if (result.isConfirmed) {
-        const taskName = document.getElementById('swal-input1').value;
-        const taskDescription = document.getElementById('descriptionTaskInput').value;
+        const taskName = document.getElementById('swal-input1').value.trim();
+        const taskDescription = document.getElementById('descriptionTaskInput').value.trim();
         const dateInput = document.getElementById('dateInput').value;
-        const tags = document.getElementById('tagsInput').value.split(',').map(tag => tag.trim());
+        const tags = document.getElementById('tagsInput').value.split(',').map(tag => tag.trim()).filter(tag => tag);
         const priority = document.getElementById('priorityInput').value;
         const project = document.getElementById('projectInput').value;
+
+        if (!taskName  || !dateInput  ) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please fill out all fields correctly! Date... && Task name...!',
+            customClass: {
+              popup: 'swal-error-popup',
+              title: 'swal-error-title',
+              text: 'swal-error-text',
+              confirmButton: 'swal-error-confirm-button', // Custom class for confirm button
+              cancelButton: 'swal-error-cancel-button'  // Custom class for cancel button
+            }
+          });
+          
+          return;
+        }
+
         const newTask = {
           name: taskName,
           description: taskDescription,

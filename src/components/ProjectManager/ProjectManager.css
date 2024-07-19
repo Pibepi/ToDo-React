@@ -44,8 +44,8 @@
 }
 
 .btn {
-  margin-top: 10px;
-  margin-bottom: 20px;
+
+
   background-color: #ffff68 !important; 
   color: black!important; 
    font-family: 'Cinzel', cursive !important; ;
@@ -58,4 +58,75 @@
 
 .collection-item {
   font-family: 'Cinzel', cursive !important; ;
+}
+
+
+/* ProjectManager.css */
+.ProjectManager {
+  margin-bottom: 20px;
+}
+
+.input-field {
+  margin-bottom: 20px;
+  
+}
+
+input[type="text"] {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  
+}
+
+button.btn {
+  background-color: #007bff;
+  
+  border: none;
+
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+button.btn:hover {
+  background-color: #0056b3;
+}
+
+button.btn.red {
+  background-color: #ff4d4d;
+  margin-left: 10px;
+  color: white !important;;
+  
+}
+
+button.btn.red:hover {
+  background-color: #cc0000;
+}
+
+.collection {
+  margin-top: 20px;
+}
+
+.collection-header {
+  background-color: #f5f5f5;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.collection-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.collection-item:hover {
+  background-color: #f9f9f9;
+}
+
+.collection-item .btn {
+  margin-left: auto;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ProjectManager.css';
 
-const ProjectManager = ({ projects, addProject }) => {
+const ProjectManager = ({ projects, addProject, removeProject }) => {
   const [newProject, setNewProject] = useState('');
 
   const handleAddProject = () => {
@@ -9,6 +9,10 @@ const ProjectManager = ({ projects, addProject }) => {
       addProject(newProject);
       setNewProject('');
     }
+  };
+
+  const handleRemoveProject = (project) => {
+    removeProject(project);
   };
 
   return (
@@ -29,7 +33,10 @@ const ProjectManager = ({ projects, addProject }) => {
       <ul className="collection with-header">
         <li className="collection-header"><h4>Projects</h4></li>
         {projects.map((project, index) => (
-          <li key={index} className="collection-item">{project}</li>
+          <li key={index} className="collection-item">
+            {project}
+            <button className="btn red right" onClick={() => handleRemoveProject(project)}>Remove</button>
+          </li>
         ))}
       </ul>
     </div>
