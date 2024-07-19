@@ -95,3 +95,75 @@ body {
 .add-task button:hover {
   background-color: #e0e0e0 !important;
 }
+
+.edit-input:focus,
+.edit-textarea:focus {
+  border-bottom-color: rgb(239, 228, 10) !important; 
+  box-shadow: 0 1px 0 0 #ffc400 !important; 
+}
+
+
+/* TodoPage.css */
+.edit-input,
+.edit-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Cinzel', cursive;
+  font-size: 14px;
+}
+
+.edit-textarea {
+  height: 80px;
+}
+
+.edit-input:focus,
+.edit-textarea:focus {
+  border-color: #999;
+  outline: none;
+}
+
+button {
+  font-family: 'Cinzel', cursive;
+}
+
+#btnDeleteTask{
+  background-color: orange !important;;
+}
+
+#btnDeleteTask:hover{
+  background-color: #e0e0e0 !important;
+}
+
+
+
+
+
+
+
+.edit-input:focus,
+.edit-textarea:focus {
+  border-color: #999;
+  outline: none;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-button {
+  background-color: #ffff68 !important;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: 'Cinzel', cursive;
+}
+
+.edit-button:hover {
+  background-color: #e0e0e0 !important;
+}

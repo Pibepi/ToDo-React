@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, forwardRef, useImperativeHandle } from 'react';
 import { NavLink } from 'react-router-dom';
 import M from 'materialize-css';
 import Swal from 'sweetalert2';
 import './Nav.css';
-import moment from 'moment';
 
-const Nav = () => {
+const Nav = forwardRef(({ addTask }, ref) => {
   const [isPaddingStyle, setIsPaddingStyle] = useState(false);
 
   useEffect(() => {
     M.Sidenav.init(document.querySelectorAll('.sidenav'), {
       edge: 'left',
-      preventScrolling: false // Allow scrolling when sidenav is open
+      preventScrolling: false 
     });
 
     if (isPaddingStyle) {
@@ -22,8 +21,6 @@ const Nav = () => {
       document.getElementById('myMenu').style.display = 'block';
     }
   }, [isPaddingStyle]);
-
-  const setActive = ({ isActive }) => (isActive ? 'active' : '');
 
   const toggleSidenav = () => {
     const sidenavInstance = M.Sidenav.getInstance(document.querySelector('.sidenav'));
@@ -57,36 +54,22 @@ const Nav = () => {
         const tags = document.getElementById('tagsInput').value.split(',').map(tag => tag.trim());
         const priority = document.getElementById('priorityInput').value;
 
-        Swal.fire({
-          title: "Task Saved!",
-          html: `
-            <div class="SwalTimeToBeCompleted htmlSwalTime">Task to be completed by: ${dateInput}</div>
-            <div class="htmlSwal">
-              <h5>Task name: ${taskName}</h5>
-              <p>Description: ${taskDescription}</p>
-              <p>Tags: ${tags.join(', ')}</p>
-              <p>Priority: ${priority}</p>
-            </div>
-            <div class="htmlSwalTime">Time created: ${moment().format('MMMM Do YYYY, HH:mm:ss')}</div>
-          `,
-          icon: "success",
-          confirmButtonText: "OK",
-          customClass: {
-            confirmButton: 'swal-confirm-button-ok',
-          }
-        });
-      } else if (result.isDenied) {
-        Swal.fire({
-          title: "Changes are not saved",
-          icon: "info",
-          confirmButtonText: "OK",
-          customClass: {
-            confirmButton: 'swal-confirm-button-ok',
-          }
-        });
+        const newTask = {
+          name: taskName,
+          description: taskDescription,
+          date: dateInput,
+          tags: tags,
+          priority: parseInt(priority, 10),
+        };
+
+        addTask(newTask);
       }
     });
   };
+
+  useImperativeHandle(ref, () => ({
+    addTaskLi,
+  }));
 
   return (
     <div>
@@ -109,6 +92,6 @@ const Nav = () => {
       </ul>
     </div>
   );
-};
+});
 
 export default Nav;

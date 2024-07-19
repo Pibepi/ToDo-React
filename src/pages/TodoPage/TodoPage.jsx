@@ -1,63 +1,125 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './TodoPage.css';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 
-const sampleTasks = [
-  {
-    id: 1,
-    name: 'Buy groceries',
-    description: 'Milk, Bread, Cheese, Eggs, and Fruits',
-    tags: ['shopping', 'urgent'],
-    priority: 1,
-    date: '2024-07-20',
-    addedDate: '2024-07-10'
-  },
-  {
-    id: 2,
-    name: 'Prepare presentation',
-    description: 'Finish slides for Monday\'s meeting',
-    tags: ['work'],
-    priority: 2,
-    date: '2024-07-21',
-    addedDate: '2024-07-11'
-  },
-  {
-    id: 3,
-    name: 'Workout',
-    description: 'Gym session for an hour',
-    tags: ['health', 'fitness'],
-    priority: 3,
-    date: '2024-07-22',
-    addedDate: '2024-07-12'
-  }
-];
+const TodoPage = ({ tasks, triggerAddTaskLi }) => {
+  const [tasksDueToday, setTasksDueToday] = useState([]);
+  const [editingTask, setEditingTask] = useState(null);
+  const [editedTask, setEditedTask] = useState({});
 
-const TodoPage = () => (
-  <div className="TodoPage container">
-    <div className="todo-header">
-      <h2>Todo List</h2>
+  useEffect(() => {
+    setTasksDueToday(tasks);
+  }, [tasks]);
+
+  const btnEditTask = (task) => {
+    setEditingTask(task);
+    setEditedTask(task);
+  };
+
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setEditedTask((prevTask) => ({
+      ...prevTask,
+      [name]: value,
+    }));
+  };
+
+  const handleSaveEdit = () => {
+    const updatedTasks = tasksDueToday.map((task) =>
+      task.id === editedTask.id ? editedTask : task
+    );
+    setTasksDueToday(updatedTasks);
+    setEditingTask(null);
+  };
+
+  const btnDeleteTask = (id) => {
+    const updatedTasks = tasksDueToday.filter((task) => task.id !== id);
+    setTasksDueToday(updatedTasks);
+  };
+
+  return (
+    <div className="TodoPage container">
+      <div className="todo-header">
+        <h2>Tasks Due Today</h2>
+      </div>
+      {tasksDueToday.length > 0 ? (
+        <ul className="todo-list">
+          {tasksDueToday.map((task) => (
+            <li key={task.id} className="todo-item">
+              {editingTask && editingTask.id === task.id ? (
+                <div className="edit-form">
+                  <input
+                    type="text"
+                    name="name"
+                    value={editedTask.name}
+                    onChange={handleEditChange}
+                    className="edit-input"
+                  />
+                  <textarea
+                    name="description"
+                    value={editedTask.description}
+                    onChange={handleEditChange}
+                    className="edit-textarea"
+                  />
+                  <input
+                    type="text"
+                    name="tags"
+                    value={editedTask.tags.join(', ')}
+                    onChange={(e) =>
+                      setEditedTask((prevTask) => ({
+                        ...prevTask,
+                        tags: e.target.value.split(', '),
+                      }))
+                    }
+                    className="edit-input"
+                  />
+                  <input
+                    type="text"
+                    name="priority"
+                    value={editedTask.priority}
+                    onChange={handleEditChange}
+                    className="edit-input"
+                  />
+                  <input
+                    type="date"
+                    name="date"
+                    value={editedTask.date}
+                    onChange={handleEditChange}
+                    className="edit-input"
+                  />
+                  <div className="edit-actions">
+                    <button onClick={handleSaveEdit} className="edit-button">Save</button>
+                    <button onClick={() => setEditingTask(null)} className="edit-button">Cancel</button>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <h5>{task.name}</h5>
+                  <p>{task.description}</p>
+                  <p className="tags">Tags: {task.tags.join(', ')}</p>
+                  <p className="priority">Priority: {task.priority}</p>
+                  <p className="date">Due Date: {task.date}</p>
+                  <p className="added-date">Added Date: {task.addedDate}</p>
+                  <div className="actions">
+                    <button onClick={() => btnEditTask(task)}>Edit</button>
+                    <button id='btnDeleteTask' onClick={() => btnDeleteTask(task.id)}>Delete</button>
+                  </div>
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No tasks due today.</p>
+      )}
+      <div className="add-task">
+        <button onClick={triggerAddTaskLi}>Add New Task</button>
+      </div>
     </div>
-    <ul className="todo-list">
-      {sampleTasks.map(task => (
-        <li key={task.id} className="todo-item">
-          <div>
-            <h5>{task.name}</h5>
-            <p>{task.description}</p>
-            <p className="tags">Tags: {task.tags.join(', ')}</p>
-            <p className="priority">Priority: {task.priority}</p>
-            <p className="date">Due Date: {task.date}</p>
-            <p className="added-date">Added Date: {task.addedDate}</p>
-          </div>
-          <div className="actions">
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </li>
-      ))}
-    </ul>
-    <div className="add-task">
-      <button>Add New Task</button>
-    </div>
-  </div>
-);
+  );
+};
+
+
 
 export default TodoPage;

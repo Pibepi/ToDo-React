@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './NotFoundPaage.css';
+import './NotFoundPage.css';
 
-const NotFoundPaage = () => {
+const NotFoundPage = () => {
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -18,4 +18,4 @@ const NotFoundPaage = () => {
   );
 };
 
-export default NotFoundPaage;
+export default NotFoundPage;
