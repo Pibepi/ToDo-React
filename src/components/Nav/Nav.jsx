@@ -9,10 +9,15 @@ const Nav = forwardRef(({ addTask, projects }, ref) => {
   const [selectedProject, setSelectedProject] = useState('Select Project');
 
   useEffect(() => {
-    M.Sidenav.init(document.querySelectorAll('.sidenav'), {
+    const sidenavs = document.querySelectorAll('.sidenav');
+    const instances = M.Sidenav.init(sidenavs, {
       edge: 'left',
       preventScrolling: false,
+      onOpenStart: () => {
+        document.body.classList.add('sidenav-open');
+      },
       onCloseEnd: () => {
+        document.body.classList.remove('sidenav-open');
         if (window.innerWidth > 992) {
           setIsPaddingStyle(false);
         }
@@ -26,6 +31,10 @@ const Nav = forwardRef(({ addTask, projects }, ref) => {
       document.body.classList.remove('body-padding');
       document.getElementById('myMenu').style.display = 'block';
     }
+
+    return () => {
+      instances.forEach(instance => instance.destroy());
+    };
   }, [isPaddingStyle]);
 
   useEffect(() => {
@@ -47,7 +56,7 @@ const Nav = forwardRef(({ addTask, projects }, ref) => {
         <input id="dateInput" class="swal2-input" type="date" placeholder="Enter date...">
         <input id="tagsInput" class="swal2-input" placeholder="Enter tags (comma-separated)...">
         <input id="priorityInput" class="swal2-input" type="number" placeholder="Enter priority (1-5)...">
-        <button id="projectDropdown" class='dropdown-trigger btn' data-target='dropdown1'>${selectedProject}</button>
+        <button id="projectDropdown" class='dropdown-trigger btn project-dropdown' data-target='dropdown1'>${selectedProject}</button>
         <ul id='dropdown1' class='dropdown-content'>
           ${projects.map(project => `<li onclick="document.getElementById('projectInput').value='${project}'; window.selectProject('${project}')">${project}</li>`).join('')}
         </ul>
@@ -116,7 +125,7 @@ const Nav = forwardRef(({ addTask, projects }, ref) => {
 
   return (
     <div>
-      <button data-target="slide-out" className="sidenav-trigger show-on-medium-and-down">
+      <button id='buttonDataTarget' data-target="slide-out" className="sidenav-trigger show-on-medium-and-down">
         <i className="material-icons myMenu" id="myMenu" onClick={toggleSidenav}>menu</i>
       </button>
 

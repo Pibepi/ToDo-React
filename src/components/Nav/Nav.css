@@ -342,11 +342,31 @@ htmlSwalTime{
   cursor: pointer !important;
 }
 
-/* Optional: Additional button hover effects */
-.swal-error-confirm-button:hover {
-  background-color: #ff8c00 !important;
+/* Стилі для кнопки */
+#buttonDataTarget {
+  background-color: #dbdbdb;
+  color: white;
+  border: none;
+  padding: 0px 0px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
-.swal-error-cancel-button:hover {
-  background-color: #5a6268 !important;
+#buttonDataTarget:hover {
+  background-color: #ff9900;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#buttonDataTarget:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+/* Приховуємо кнопку, коли бічна панель відкрита */
+.sidenav-open #buttonDataTarget {
+  display: none;
 }
