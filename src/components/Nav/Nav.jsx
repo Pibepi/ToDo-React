@@ -47,7 +47,7 @@ const Nav = forwardRef(({ addTask, projects }, ref) => {
         <input id="dateInput" class="swal2-input" type="date" placeholder="Enter date...">
         <input id="tagsInput" class="swal2-input" placeholder="Enter tags (comma-separated)...">
         <input id="priorityInput" class="swal2-input" type="number" placeholder="Enter priority (1-5)...">
-        <a id="projectDropdown" class='dropdown-trigger btn' href='#' data-target='dropdown1'>${selectedProject}</a>
+        <button id="projectDropdown" class='dropdown-trigger btn' data-target='dropdown1'>${selectedProject}</button>
         <ul id='dropdown1' class='dropdown-content'>
           ${projects.map(project => `<li onclick="document.getElementById('projectInput').value='${project}'; window.selectProject('${project}')">${project}</li>`).join('')}
         </ul>
@@ -79,7 +79,7 @@ const Nav = forwardRef(({ addTask, projects }, ref) => {
         const priority = document.getElementById('priorityInput').value;
         const project = document.getElementById('projectInput').value;
 
-        if (!taskName  || !dateInput  ) {
+        if (!taskName || !dateInput) {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -116,9 +116,9 @@ const Nav = forwardRef(({ addTask, projects }, ref) => {
 
   return (
     <div>
-      <a data-target="slide-out" className="sidenav-trigger show-on-medium-and-down" href="#">
+      <button data-target="slide-out" className="sidenav-trigger show-on-medium-and-down">
         <i className="material-icons myMenu" id="myMenu" onClick={toggleSidenav}>menu</i>
-      </a>
+      </button>
 
       <ul id="slide-out" className="sidenav">
         <li><i className="material-icons myMenu" onClick={toggleSidenav}>menu</i></li>
