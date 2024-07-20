@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './TodoPage.css';
 import moment from 'moment';
-import PropTypes from 'prop-types';
 import TaskFilter from '../../components/TaskFilter/TaskFilter';
 
 const TodoPage = ({ tasks, triggerAddTaskLi, myFilter, removeTask }) => {
@@ -129,11 +128,6 @@ const TodoPage = ({ tasks, triggerAddTaskLi, myFilter, removeTask }) => {
   );
 };
 
-TodoPage.propTypes = {
-  tasks: PropTypes.array.isRequired,
-  triggerAddTaskLi: PropTypes.func.isRequired,
-  myFilter: PropTypes.func.isRequired,
-  removeTask: PropTypes.func.isRequired,
-};
+
 
 export default TodoPage;
