@@ -116,7 +116,7 @@ const Nav = forwardRef(({ addTask, projects }, ref) => {
 
   return (
     <div>
-      <a data-target="slide-out" className="sidenav-trigger show-on-medium-and-down">
+      <a data-target="slide-out" className="sidenav-trigger show-on-medium-and-down" href="#">
         <i className="material-icons myMenu" id="myMenu" onClick={toggleSidenav}>menu</i>
       </a>
 

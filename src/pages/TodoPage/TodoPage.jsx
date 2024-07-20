@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './TodoPage.css';
-import moment from 'moment';
 import TaskFilter from '../../components/TaskFilter/TaskFilter';
 
 const TodoPage = ({ tasks, triggerAddTaskLi, myFilter, removeTask }) => {
